@@ -1,0 +1,17 @@
+{
+  "name": "scrape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scrape_flows.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "knex": "^0.95.4",
+    "luxon": "^1.26.0",
+    "pg": "^8.6.0"
+  }
+}
