@@ -52,7 +52,7 @@ async function getFlows() {
       .catch(err => { console.log(err) })    
 
     while (period < 25) {
-      const url=`http://www.sappmarket.com/Home/GetFlow?deliveryDate=${curDate.toFormat('yyyy/LL/dd')}&periodId=${period-1}&categoryId=${cats[market-1]}&marketId=${market}`
+      const url=`http://www.sappmarket.com/Home/GetFlow?deliveryDate=${curDate.toFormat('yyyy/LL/dd')}&periodId=${period}&categoryId=${cats[market-1]}&marketId=${market}`
       console.log(url)
     
       let response = await axios.get(url)
@@ -61,7 +61,7 @@ async function getFlows() {
       response.data.data.map(e => {
         if (e.FlowResult>0) {
           
-          const oIns = {flowdate: curDate.toISODate(), market: market, flow: e.FlowResult, from: e.FromAreaName, to: e.ToAreaName}
+          const oIns = {flowdate: curDate.toISODate(), market: market, flow: e.FlowResult, from: e.FromAreaName, to: e.ToAreaName, hour: period-1}
           console.log(oIns)
           return knex('flows')
             .insert(oIns)
