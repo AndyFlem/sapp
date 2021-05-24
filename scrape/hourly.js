@@ -17,7 +17,7 @@ const knex = require('knex')({
 })
 
 
-let rawdata = fs.readFileSync('../raw/IDM-Hourly.json');
+let rawdata = fs.readFileSync('../raw/DAM-Hourly.json');
 let data = JSON.parse(JSON.parse(rawdata).data)
 console.log(data[0])
 Promise.all(data.map((d,indx) => {
@@ -28,7 +28,7 @@ Promise.all(data.map((d,indx) => {
       const price = d[1]
       const turnover = d[2]
       console.log(d,date.toISODate(),hour, price, turnover)
-      oIns={market: 4, tradedate: date.toISODate(), hour: hour, price: price, volume: turnover}
+      oIns={market: 1, tradedate: date.toISODate(), hour: hour, price: price, volume: turnover}
       return knex('hourly')
         .insert(oIns)      
     }

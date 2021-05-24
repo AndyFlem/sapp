@@ -39,7 +39,7 @@ async function getFlows() {
 
   console.log(curDate)
 
-  while (curDate <= DateTime.fromISO( '2021-03-31')) 
+  while (curDate <= DateTime.fromISO( '2021-04-30')) 
   {
     let market = 1
     let period = 1
