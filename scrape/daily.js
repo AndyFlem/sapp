@@ -2,6 +2,7 @@ const fs = require('fs');
 const { DateTime } = require("luxon")
 const axios = require('axios').default
 
+
 const base_url=`http://www.sappmarket.com/Home/GetPriceAndTurnOverData`
 
 from=DateTime.fromISO(`2016-01-01`)
