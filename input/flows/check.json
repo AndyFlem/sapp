@@ -1,0 +1,11 @@
+[
+    {"date":"2021-05-01","hour":0,"flow":49,"from":"BOT","to":"ZIMA"},
+    {"date":"2021-05-01","hour":0,"flow":49,"from":"ZIMA","to":"ZIM"}]
+    {"date":"2021-05-01","hour":0,"flow":33,"from":"ZIM","to":"ZAMZ"},
+    {"date":"2021-05-01","hour":0,"flow":33,"from":"ZAMZ","to":"ZAMC"},
+
+    {"date":"2021-05-01","hour":0,"flow":88,"from":"MOZS","to":"RSAN"},
+    {"date":"2021-05-01","hour":0,"flow":30,"from":"RSAN","to":"RSAS"},
+    {"date":"2021-05-01","hour":0,"flow":58,"from":"RSAN","to":"BOT"},
+    {"date":"2021-05-01","hour":0,"flow":30,"from":"RSAS","to":"NAM"},
+    
