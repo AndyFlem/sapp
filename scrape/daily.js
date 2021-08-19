@@ -2,7 +2,7 @@ const fs = require('fs');
 const { DateTime } = require("luxon")
 const axios = require('axios').default
 
-const market = 2
+const market = 3
 const cats=[5,18,19,22]
 const prefs=['dam','fpm','fpw']
 
