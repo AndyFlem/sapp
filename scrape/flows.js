@@ -24,7 +24,7 @@ async function getFlows() {
   console.log(curDate.toISODate())
   let csvData=[]
 
-  while (curDate <= DateTime.fromISO( '2021-11-01')) 
+  while (curDate <= DateTime.fromISO( '2021-12-01')) 
   {
     let period = 1
 
