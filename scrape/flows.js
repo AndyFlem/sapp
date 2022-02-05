@@ -26,9 +26,9 @@ async function getFlows() {
 
   while (curDate <= DateTime.fromISO( '2022-02-01')) 
   {
-    let period = 1
+    let period = 1+10
 
-    while (period < 25) {
+    while (period < 25+10) {
       const url=`http://www.sappmarket.com/Home/GetFlow?deliveryDate=${curDate.toFormat('yyyy/LL/dd')}&periodId=${period}&categoryId=${cats[market-1]}&marketId=${market}`
       console.log(url)
     
@@ -37,7 +37,7 @@ async function getFlows() {
 
       response.data.data.forEach(e => {
         if (e.FlowResult>0) {
-          const oIns = {date: curDate.toISODate(),  hour: period-1, flow: e.FlowResult,from: e.FromAreaName, to: e.ToAreaName}
+          const oIns = {date: curDate.toISODate(),  hour: period-1-10, flow: e.FlowResult,from: e.FromAreaName, to: e.ToAreaName}
           csvData.push(oIns)
         } 
       })
