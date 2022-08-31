@@ -8,7 +8,12 @@ const prefs=['dam','fpm','fpw','idm']
 
 const base_url=`http://www.sappmarket.com/Home/GetPriceAndTurnOverData`
 
-from=DateTime.fromISO(`2016-01-01`)
+if (market===4) {
+    from=DateTime.fromISO(`2020-01-01`)
+} else {
+    from=DateTime.fromISO(`2016-01-01`)
+}
+
 to=from.plus({month: 1}).minus({day: 1})
 
 getData().then(() => {
