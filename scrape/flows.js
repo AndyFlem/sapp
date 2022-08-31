@@ -1,7 +1,7 @@
 const axios = require('axios').default
 const { DateTime } = require("luxon")
 const fs = require('fs');
-const market = 3
+const market = 4
 const cats=[5,18,19,5]
 const prefs=['dam','fpm','fpw', 'idm']
 
@@ -24,7 +24,7 @@ async function getFlows() {
   console.log(curDate.toISODate())
   let csvData=[]
 
-  while (curDate <= DateTime.fromISO( '2022-08-01')) 
+  while (curDate <= DateTime.fromISO( '2022-09-01')) 
   {
     let period = 1+10
 
