@@ -28,7 +28,6 @@ async function getData() {
 
         if (!fs.existsSync(path) || (to >  DateTime.local().startOf('month'))) {
             const url=base_url + `?dateFrom=${from.toFormat('dd/LL/yyyy')}&dateTo=${to.toFormat('dd/LL/yyyy')}&aggPeriodId=1&areaId=0&currencyId=1&marketId=` + market
-            
             console.log(url)
             try {
                 let response = await axios.get(url)
