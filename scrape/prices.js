@@ -1,7 +1,7 @@
 const axios = require('axios').default
 const { DateTime } = require("luxon")
 const fs = require('fs');
-const market = 1
+const market = 4
 const prefs=['dam','fpm','fpw', 'idm']
 
 const folder = '../input/prices/' + prefs[market-1] + '/'
@@ -13,7 +13,7 @@ getFlows().then(() => {
 async function getFlows() {
   let curDate
   
-  curDate = DateTime.fromISO('2016-01-02')
+  curDate = DateTime.fromISO('2020-01-01')
   
   let files=fs.readdirSync('../input/prices/' + prefs[market-1])
   if (files.length>0) {
