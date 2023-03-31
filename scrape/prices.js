@@ -1,7 +1,7 @@
 const axios = require('axios').default
 const { DateTime } = require("luxon")
 const fs = require('fs');
-const market = 4
+const market = 1
 const prefs=['dam','fpm','fpw', 'idm']
 
 const folder = '../input/prices/' + prefs[market-1] + '/'
