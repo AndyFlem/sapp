@@ -1,7 +1,7 @@
 const axios = require('axios').default
 const { DateTime } = require("luxon")
 const fs = require('fs');
-const market = 4
+const market = 1
 const cats=[5,18,19,5]
 const prefs=['dam','fpm','fpw', 'idm']
 
@@ -47,8 +47,10 @@ async function getFlows() {
       let response = await axios.get(url)
    
       response.data.data.forEach(e => {
+        if (e.FlowResult>0) {
           const oIns = {date: curDate.toISODate(),  hour: period-11, flow: e.FlowResult,from: e.FromAreaName, to: e.ToAreaName}
           csvData.push(oIns)
+        }
       })
       period++
     }
