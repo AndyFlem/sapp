@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const prefs=['dam','fpm','fpw', 'idm']
 
-const market = 1
+const market = 4
 const startDate = DateTime.fromISO('2023-05-01')
 const endDate = startDate.plus({month:1}).minus({day:1})
 

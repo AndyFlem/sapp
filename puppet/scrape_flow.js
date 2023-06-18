@@ -4,7 +4,7 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(StealthPlugin())
 const fs = require('fs');
 
-const market = 1
+const market = 4
 const folder = '../input/raw'
 const cats=[5,18,19,5]
 
@@ -19,7 +19,7 @@ function PromiseTimeout(delayms) {
 
 
 startDate = DateTime.fromISO('2023-05-01')
-endDate = DateTime.now().minus({day: 1})
+endDate = DateTime.fromISO('2023-05-31') // DateTime.now().minus({day: 1})
 
 console.log('Market: ', market)
 console.log('Start date: ', startDate.toISODate())
@@ -27,9 +27,14 @@ console.log('End date: ', endDate.toISODate())
 
 
 let requests = []
-const days = Interval.fromDateTimes(startDate, endDate).splitBy({ days: 1 }).map((d) => d.start)
+const days = Interval.fromDateTimes(startDate, endDate.plus({day: 1})).splitBy({ days: 1 }).map((d) => d.start)
 days.map(v => {
-  const dir = folder + '/' + market + '/' + v.toISODate()
+  const rdir = folder + '/' + market + '/' + v.toFormat('yyyy_LL')
+  if (!fs.existsSync(rdir)){
+    fs.mkdirSync(rdir);
+  }
+
+  const dir = rdir + '/' +  v.toISODate()
   if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
   }
@@ -59,6 +64,7 @@ puppeteer.launch({ headless: false }).then(async browser => {
 
     await page.goto(url)
     await page.waitForSelector('pre', {timeout: 300000})
+    await page.waitForNetworkIdle()
   
     const content = await page.content()
   
@@ -66,12 +72,12 @@ puppeteer.launch({ headless: false }).then(async browser => {
     const data = JSON.parse(await (await pre.getProperty('textContent')).jsonValue())
     // console.log(data)
   
-    const fil = folder + '/' + market + '/' + req[1].toISODate() + '/' + (req[2]-11) + '.json'
+    const fil = folder + '/' + market + '/' + req[1].toFormat('yyyy_LL') + '/' +  req[1].toISODate() + '/' + (req[2]-11) + '.json'
     console.log(fil)
     fs.writeFileSync(fil, JSON.stringify(data))
 
-    const wait = 200 + Math.random()*500
-    console.log('Waiting: ' + wait)
+    const wait = 200 + Math.random()*100
+    // console.log('Waiting: ' + wait)
     await PromiseTimeout(wait)
     await page.close()  
   }  

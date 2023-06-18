@@ -4,7 +4,7 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(StealthPlugin())
 const fs = require('fs');
 
-const market = 1
+const market = 4
 const year = 2023
 const month = '05'
 
