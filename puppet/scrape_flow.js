@@ -19,7 +19,7 @@ function PromiseTimeout(delayms) {
 
 
 startDate = DateTime.fromISO('2023-05-01')
-endDate = DateTime.fromISO('2023-05-31') // DateTime.now().minus({day: 1})
+endDate = DateTime.now().minus({day: 1})
 
 console.log('Market: ', market)
 console.log('Start date: ', startDate.toISODate())
