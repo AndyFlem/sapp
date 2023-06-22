@@ -4,11 +4,13 @@ const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 puppeteer.use(StealthPlugin())
 const fs = require('fs');
 
-const market = 4
-const folder = '../input/raw'
+const market = 1
+const type = 'price'
+
+const folder = '../input/raw_' + type
 const cats=[5,18,19,5]
 
-const baseurl = 'https://www.sappmarket.com/Home/GetFlow' // ?deliveryDate=2023/05/01&periodId=13&categoryId=5&marketId=1'
+const baseurl = 'https://www.sappmarket.com/Home/' // ?deliveryDate=2023/05/01&periodId=13&categoryId=5&marketId=1'
 // const baseurl = 'http://localhost:3000/GetFlow' //?deliveryDate=2023/05/01&periodId=13&categoryId=5&marketId=1'
 
 function PromiseTimeout(delayms) {
@@ -58,8 +60,14 @@ puppeteer.launch({ headless: false }).then(async browser => {
     console.log('No: ', no, ' of: ' , requests.length)
 
     const page = await browser.newPage()
-  
-    const url = baseurl + `?x=${Math.random()}&deliveryDate=${req[1].toFormat('yyyy/LL/dd')}&periodId=${req[2]}&categoryId=${cats[market-1]}&marketId=${market}`
+ 
+    let url
+    if (type=='flow') {
+      url = baseurl + `GetFlow?x=${Math.random()}&deliveryDate=${req[1].toFormat('yyyy/LL/dd')}&periodId=${req[2]}&categoryId=${cats[market-1]}&marketId=${market}`
+    } else {
+      url = baseurl + `GetAreaPrice?x=${Math.random()}&deliveryDate=${req[1].toFormat('yyyy/LL/dd')}&periodId=${req[2]}&currencyId=1&marketId=${market}`
+    }
+    
     console.log(url)
 
     await page.goto(url)
@@ -81,7 +89,5 @@ puppeteer.launch({ headless: false }).then(async browser => {
     await PromiseTimeout(wait)
     await page.close()  
   }  
-
-
   await browser.close()
 })

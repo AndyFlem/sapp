@@ -7,7 +7,7 @@ const market = 4
 const startDate = DateTime.fromISO('2023-05-01')
 const endDate = startDate.plus({month:1}).minus({day:1})
 
-const rawfolder = '../input/raw/' + market + '/' + startDate.toFormat('yyyy_LL')
+const rawfolder = '../input/raw_flow/' + market + '/' + startDate.toFormat('yyyy_LL')
 const outfile = prefs[market-1] + '_' + startDate.toFormat('yyyy_LL') + '.json'
 const out = '../input/flows/' + prefs[market-1] + '/' + outfile 
 
