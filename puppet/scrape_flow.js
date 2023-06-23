@@ -5,7 +5,7 @@ puppeteer.use(StealthPlugin())
 const fs = require('fs');
 
 const market = 1
-const type = 'price'
+const type = 'flow'
 
 const folder = '../input/raw_' + type
 const cats=[5,18,19,5]
