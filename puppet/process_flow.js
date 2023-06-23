@@ -3,13 +3,15 @@ const fs = require('fs');
 
 const prefs=['dam','fpm','fpw', 'idm']
 
-const market = 4
+const market = 1
+const type = 'price' //'flow'
+
 const startDate = DateTime.fromISO('2023-05-01')
 const endDate = startDate.plus({month:1}).minus({day:1})
 
-const rawfolder = '../input/raw_flow/' + market + '/' + startDate.toFormat('yyyy_LL')
+const rawfolder = '../input/raw_' + type + '/' + market + '/' + startDate.toFormat('yyyy_LL')
 const outfile = prefs[market-1] + '_' + startDate.toFormat('yyyy_LL') + '.json'
-const out = '../input/flows/' + prefs[market-1] + '/' + outfile 
+const out = '../input/' + type + '/' + prefs[market-1] + '/' + outfile 
 
 console.log('Start date: ', startDate.toISODate())
 console.log('End date: ', endDate.toISODate())
@@ -28,12 +30,19 @@ for (const dte of dtes) {
     const data=JSON.parse(fs.readFileSync(rawfolder + '/' + dte + '/' + hour)).data
     
     data.forEach(e => {
-      if (e.FlowResult>0) {
-        const oIns = {date: dte,  hour: parseInt(hour.split('.')[0]), flow: e.FlowResult,from: e.FromAreaName, to: e.ToAreaName}
-        csvData.push(oIns)
+      let oIns
+
+      if (type == 'flow') {
+        if (e.FlowResult>0) {
+          oIns = { date: dte,  hour: parseInt(hour.split('.')[0]), flow: e.FlowResult,from: e.FromAreaName, to: e.ToAreaName }
+        }
+      } else {
+        oIns = {date: dte,  hour: parseInt(hour.split('.')[0]), price: e.AreaPrice,area: e.AreaShortName}
       }
+      csvData.push(oIns)
     })
   }
 }
 
+console.log(out)
 fs.writeFileSync(out, JSON.stringify(csvData))
