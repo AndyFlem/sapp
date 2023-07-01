@@ -3,10 +3,10 @@ const fs = require('fs');
 
 const prefs=['dam','fpm','fpw', 'idm']
 
-const market = 1
-const type = 'price' //'flow'
+const market = 4
+const type = 'flow' // 'price' //
 
-const startDate = DateTime.fromISO('2023-05-01')
+const startDate = DateTime.fromISO('2023-06-01')
 const endDate = startDate.plus({month:1}).minus({day:1})
 
 const rawfolder = '../input/raw_' + type + '/' + market + '/' + startDate.toFormat('yyyy_LL')
@@ -35,11 +35,12 @@ for (const dte of dtes) {
       if (type == 'flow') {
         if (e.FlowResult>0) {
           oIns = { date: dte,  hour: parseInt(hour.split('.')[0]), flow: e.FlowResult,from: e.FromAreaName, to: e.ToAreaName }
+          csvData.push(oIns)
         }
       } else {
         oIns = {date: dte,  hour: parseInt(hour.split('.')[0]), price: e.AreaPrice,area: e.AreaShortName}
+        csvData.push(oIns)
       }
-      csvData.push(oIns)
     })
   }
 }
