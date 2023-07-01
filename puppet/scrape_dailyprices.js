@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const market = 4
 const year = 2023
-const month = '05'
+const month = '06'
 
 const cats=[5,18,19,5]
 const prefs=['dam','fpm','fpw', 'idm']
@@ -39,6 +39,7 @@ puppeteer.launch({ headless: false }).then(async browser => {
 
   await page.goto(url)
   await page.waitForSelector('pre', {timeout: 300000})
+  await page.waitForNetworkIdle()
 
   const content = await page.content()
 
