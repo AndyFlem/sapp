@@ -73,13 +73,14 @@ async function runner(browser, type, market) {
   
     const content = await page.content()  
     const pre = await page.$('pre') 
+    
     const data = JSON.parse(await (await pre.getProperty('textContent')).jsonValue())
   
     const fil = folder + '/' + market + '/' + req[1].toFormat('yyyy_LL') + '/' +  req[1].toISODate() + '/' + (req[2]-11) + '.json'
     console.log(fil)
     fs.writeFileSync(fil, JSON.stringify(data))
 
-    const wait = 200 + Math.random()*100
+    const wait = 500 + Math.random()*1000
     await PromiseTimeout(wait)
     await page.close()  
   }
