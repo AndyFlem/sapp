@@ -80,7 +80,7 @@ async function runner(browser, type, market) {
     console.log(fil)
     fs.writeFileSync(fil, JSON.stringify(data))
 
-    const wait = 500 + Math.random()*1000
+    const wait = 300 + Math.random()*500
     await PromiseTimeout(wait)
     await page.close()  
   }
