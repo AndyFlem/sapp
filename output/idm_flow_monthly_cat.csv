@@ -448,3 +448,5 @@ year,month,node,cat,side,flow_sum,value,hour_count,price_weight_mean,price_mean,
 2023,6,MOZ,standard,supply,-954,-30329.0,51,31.79140461215933,32.98039215686274,-18.705882352941178
 2023,6,ZAMC,evening,supply,-20,-2740.0,4,137.0,135.0,-5.0
 2023,6,ZAMZ,evening,supply,-54,-6366.0,2,117.88888888888889,124.5,-27.0
+2023,7,BOT,off,consume,105,15750.0,3,150.0,150.0,35.0
+2023,7,ZAMZ,off,supply,-105,-15750.0,3,150.0,150.0,-35.0
