@@ -3,10 +3,10 @@ const fs = require('fs');
 
 const prefs=['dam','fpm','fpw', 'idm']
 
-const market = 4
-const type = 'flow' // 'price' //
+const market = 1
+const type = 'price' // 'price' //
 
-const startDate = DateTime.fromISO('2023-07-01')
+const startDate = DateTime.fromISO('2023-08-01')
 const endDate = startDate.plus({month:1}).minus({day:1})
 
 const rawfolder = '../input/raw_' + type + '/' + market + '/' + startDate.toFormat('yyyy_LL')

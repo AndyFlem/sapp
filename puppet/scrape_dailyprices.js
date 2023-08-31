@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const market = 4
 const year = 2023
-const month = '07'
+const month = '08'
 
 const cats=[5,18,19,5]
 const prefs=['dam','fpm','fpw', 'idm']
