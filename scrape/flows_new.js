@@ -5,7 +5,7 @@ const market = 1
 const cats=[5,18,19,5]
 const prefs=['dam','fpm','fpw', 'idm']
 
-const folder = '../input/flows/' + prefs[market-1] + '/'
+const folder = '../input/flow/' + prefs[market-1] + '/'
 
 const config = { headers : {
   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
@@ -38,7 +38,7 @@ async function getFlows() {
   let lastDate
   curDate = DateTime.fromISO('2020-01-01')
   
-  let files=fs.readdirSync('../input/flows/' + prefs[market-1])
+  let files=fs.readdirSync('../input/flow/' + prefs[market-1])
   if (files.length>0) {
     const lastFile=files.sort()[files.length-1]
     console.log("Last file: " + lastFile)
@@ -73,7 +73,7 @@ async function getFlows() {
       console.log(url)
       let response = await axios.get(url, config)
      
-      //console.log(response.request)
+      console.log(response.data)
       
       response.data.data.forEach(e => {
         if (e.FlowResult>0) {

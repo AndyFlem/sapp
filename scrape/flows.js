@@ -14,7 +14,7 @@ async function getFlows() {
   
   curDate = DateTime.fromISO( '2016-01-01')
 
-  let files=fs.readdirSync('../input/flows/' + prefs[market-1])
+  let files=fs.readdirSync('../input/flow/' + prefs[market-1])
   if (files.length>0) {
     const lastFile=files.sort()[files.length-1]
     curDate=DateTime.fromObject({year: lastFile.slice(4,8), month:lastFile.slice(9,11)}).endOf('month').plus({day:1})
@@ -24,7 +24,7 @@ async function getFlows() {
   console.log(curDate.toISODate())
   let csvData=[]
 
-  while (curDate <= DateTime.fromISO( '2023-04-01')) 
+  while (curDate <= DateTime.fromISO( '2023-12-01')) 
   {
     let period = 1+10
 
@@ -46,7 +46,7 @@ async function getFlows() {
     curDate=curDate.plus({ days: 1 })
     if (curDate.day==1) {
       console.log(csvData)
-      fs.writeFileSync('../input/flows/' + prefs[market-1] + '/' + prefs[market-1] + '_' + curDate.minus({ days: 1 }).toFormat('yyyy_LL') + '.json', JSON.stringify(csvData))
+      fs.writeFileSync('../input/flow/' + prefs[market-1] + '/' + prefs[market-1] + '_' + curDate.minus({ days: 1 }).toFormat('yyyy_LL') + '.json', JSON.stringify(csvData))
       csvData=[]
     }
   } 

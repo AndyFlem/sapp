@@ -4,7 +4,7 @@ const fs = require('fs');
 const market = 3
 const prefs=['dam','fpm','fpw', 'idm']
 
-const folder = '../input/prices/' + prefs[market-1] + '/'
+const folder = '../input/price/' + prefs[market-1] + '/'
 
 getFlows().then(() => {
   console.log('OK')
@@ -15,7 +15,7 @@ async function getFlows() {
   
   curDate = DateTime.fromISO('2020-01-01')
   
-  let files=fs.readdirSync('../input/prices/' + prefs[market-1])
+  let files=fs.readdirSync('../input/price/' + prefs[market-1])
   if (files.length>0) {
     const lastFile=files.sort()[files.length-1]
     console.log("Last file: " + lastFile)
