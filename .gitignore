@@ -1,3 +1,4 @@
 /scrape/node_modules
 /puppet/node_modules
 /duckdb/node_modules
+/.venv
