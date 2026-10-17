@@ -45,7 +45,7 @@ function buildRequests(type, market) {
   // const baseurl = 'http://localhost:3000/GetFlow' //?deliveryDate=2023/05/01&periodId=13&categoryId=5&marketId=1'
 
   const startDate = DateTime.fromISO('2023-05-01')
-  const endDate = DateTime.fromISO('2026-01-01').minus({day: 1})//now().minus({day: 1})
+  const endDate = DateTime.fromISO('2026-10-01').minus({day: 1})//now().minus({day: 1})
 
   let requests = []
   const days = Interval.fromDateTimes(startDate, endDate.plus({day: 1})).splitBy({ days: 1 }).map((d) => d.start)
